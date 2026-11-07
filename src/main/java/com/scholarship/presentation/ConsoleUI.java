@@ -98,6 +98,9 @@ public class ConsoleUI {
         } while (choice != '5');
     }
 
+    
+    
+
 
     private void clearScreen() {
 
@@ -105,7 +108,7 @@ public class ConsoleUI {
         System.out.flush();
     }
         
-
+    
 
 
     
