@@ -7,8 +7,12 @@ public class Applicant {
     private String middleName;
     private String address;
     private String contactNumber;
+    private int GWA;
 
-    public Applicant(int idNumber, String lastName, String firstName, String middleName, String address, String contactNumber) {
+    
+    
+
+    public Applicant(int idNumber, String lastName, String firstName, String middleName, String address, String contactNumber, int GWA) {
 
         this.idNumber = idNumber;
         this.lastName = lastName;
@@ -16,6 +20,7 @@ public class Applicant {
         this.middleName = middleName;
         this.address = address;
         this.contactNumber = contactNumber;
+        this.GWA = GWA;
     }
 
     public int getIdNumber() {
@@ -42,6 +47,11 @@ public class Applicant {
         return contactNumber;
     }
 
+    public int getGWA() {
+        return GWA;
+    }
+
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -60,6 +70,10 @@ public class Applicant {
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public void setGWA(int gWA) {
+        GWA = gWA;
     }
 
     
