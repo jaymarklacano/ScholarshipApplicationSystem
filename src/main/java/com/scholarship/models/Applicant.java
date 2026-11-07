@@ -61,4 +61,11 @@ public class Applicant {
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
+
+    
+    
+
+
+
+    
 }
