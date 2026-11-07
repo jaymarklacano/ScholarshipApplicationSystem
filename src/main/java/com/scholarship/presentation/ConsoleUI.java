@@ -31,6 +31,25 @@ public class ConsoleUI {
         System.out.print("Enter Password: ");
         String password = input.nextLine();
 
+        if (!authService.login(name, password)) {
+
+            if (!name.equals(realName) &&
+                !password.equals(realPassword)) {
+
+                System.out.println("Incorrect username and password!");
+
+            } else if (!name.equals(realName)) {
+
+                System.out.println("Incorrect username!");
+
+            } else {
+
+                System.out.println("Incorrect password!");
+            }
+
+            return;
+        }
+
         
 
 
