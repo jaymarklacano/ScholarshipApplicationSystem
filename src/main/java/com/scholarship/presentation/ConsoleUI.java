@@ -141,9 +141,18 @@ public class ConsoleUI {
                 gwa
             );
 
-            
+            System.out.println("Record saved successfully.");
 
-        } while (Character.toUpperCase(answer) == 'Y');
+            System.out.print(
+                "Do you still want to input another data (y/n)? "
+            );
+
+            answer = input.nextLine().charAt(0);
+
+            clearScreen();
+
+
+        } while ();
     }
 
 
