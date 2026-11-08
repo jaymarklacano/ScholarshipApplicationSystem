@@ -152,7 +152,7 @@ public class ConsoleUI {
             clearScreen();
 
 
-        } while ();
+        } while (Character.toUpperCase(answer) == 'Y');
     }
 
 
