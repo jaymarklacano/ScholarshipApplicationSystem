@@ -57,6 +57,12 @@ public class ApplicantManager {
         return false;
     }
 
+    public boolean deleteApplicant(int id) {
+        return repository.delete(id);
+    }
+
+    
+
 
     
 
