@@ -1,5 +1,7 @@
 package main.java.com.scholarship.service;
 
+import java.util.ArrayList;
+
 import main.java.com.scholarship.dataaccess.ApplicantRepository;
 import main.java.com.scholarship.models.Applicant;
 
@@ -59,6 +61,10 @@ public class ApplicantManager {
 
     public boolean deleteApplicant(int id) {
         return repository.delete(id);
+    }
+
+    public ArrayList<Applicant> getAllApplicants() {
+        return repository.getAll();
     }
 
     
