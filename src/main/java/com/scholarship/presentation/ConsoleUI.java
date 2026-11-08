@@ -99,7 +99,10 @@ public class ConsoleUI {
     }
 
     
-    
+    private void saveApplicant() {
+
+        
+    }
 
 
     private void clearScreen() {
