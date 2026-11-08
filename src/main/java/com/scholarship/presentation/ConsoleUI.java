@@ -101,7 +101,17 @@ public class ConsoleUI {
     
     private void saveApplicant() {
 
-        
+        char answer;
+
+        do {
+
+            if (applicantManager.getAllApplicants().size() >= 50) {
+                System.out.println("Record list is full.");
+                break;
+            }
+
+           
+        } while ();
     }
 
 
