@@ -110,8 +110,40 @@ public class ConsoleUI {
                 break;
             }
 
-           
-        } while ();
+            System.out.println(
+                "Assigned ID number: " + applicantManager.getNextId()
+            );
+
+            System.out.print("Last Name: ");
+            String lastName = input.nextLine();
+
+            System.out.print("First Name: ");
+            String firstName = input.nextLine();
+
+            System.out.print("Middle Name: ");
+            String middleName = input.nextLine();
+
+            System.out.print("Address: ");
+            String address = input.nextLine();
+
+            System.out.print("Contact Number: ");
+            String contactNumber = input.nextLine();
+
+            System.out.print("GWA: ");
+            double gwa = Double.parseDouble(input.nextLine());
+
+            applicantManager.saveApplicant(
+                lastName,
+                firstName,
+                middleName,
+                address,
+                contactNumber,
+                gwa
+            );
+
+            
+
+        } while (Character.toUpperCase(answer) == 'Y');
     }
 
 
