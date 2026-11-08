@@ -11,4 +11,14 @@ public class ApplicantManager {
         this.repository = repository;
     }
 
+    public boolean saveApplicant(String lastName, String firstName,
+        String middleName, String address,
+        String contactNumber) {
+
+        if (repository.getAll().size() >= 50) {
+        return false;
+}
+
+
+
 }
