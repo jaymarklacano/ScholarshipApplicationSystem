@@ -35,6 +35,29 @@ public class ApplicantManager {
         return true;
     }
 
+    public boolean updateApplicant(int id, String lastName,
+        String firstName, String middleName,
+        String address, String contactNumber,
+        double GWA) {
+
+        Applicant applicant = repository.search(id);
+
+        if (applicant != null) {
+
+            applicant.setLastName(lastName);
+            applicant.setFirstName(firstName);
+            applicant.setMiddleName(middleName);
+            applicant.setAddress(address);
+            applicant.setContactNumber(contactNumber);
+            applicant.setGWA(GWA);
+
+            return true;
+        }
+
+        return false;
+    }
+
+
     
 
 
