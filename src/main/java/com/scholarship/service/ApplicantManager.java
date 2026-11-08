@@ -67,6 +67,10 @@ public class ApplicantManager {
         return repository.getAll();
     }
 
+    public int getNextId() {
+        return idCounter;
+    }
+
     
 
 
