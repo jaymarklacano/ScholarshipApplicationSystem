@@ -203,12 +203,8 @@ public class ConsoleUI {
 
             clearScreen();
 
+        }while (Character.toUpperCase(answer) == 'Y');
 
-            
-
-
-
-        }
 
     }
 
