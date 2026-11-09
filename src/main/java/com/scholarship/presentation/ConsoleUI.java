@@ -174,6 +174,36 @@ public class ConsoleUI {
 
             Applicant applicant = applicantManager.searchApplicant(searchId);
 
+            if (applicant != null) {
+
+                System.out.println("\n=====================================");
+                System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
+                System.out.println("=====================================");
+
+                System.out.println(
+                    "ID NUMBER\tNAME\t\t\tGWA"
+                );
+
+                System.out.println("-------------------------------------");
+
+                displayApplicant(applicant);
+
+                System.out.println("-------------------------------------");
+
+            } else {
+
+                System.out.println("ID not found.");
+            }
+
+            System.out.print(
+                "Do you still want to input another Id (y/n)? "
+            );
+
+            answer = input.nextLine().charAt(0);
+
+            clearScreen();
+
+
             
 
 
