@@ -165,7 +165,8 @@ public class ConsoleUI {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-        
+    
+    // DISPLAY ALL APPLICANTS
     private void displayApplicants() {
 
         if (applicantManager.getAllApplicants().isEmpty()) {
@@ -200,7 +201,8 @@ public class ConsoleUI {
             "---------------------------------------------------------------------------------------------------------------"
         );
     }
-
+    
+    // DISPLAY ONE APPLICANT
     private void displayApplicant(Applicant applicant) {
         System.out.printf(
             "%-10d %-20s %-20s %-20s %-25s %-15s %-10.2f%n",
@@ -212,9 +214,20 @@ public class ConsoleUI {
             applicant.getContactNumber(),
             applicant.getGWA()
         );
-
-
     }
+
+     // DISPLAY APPLICANT DETAILS
+     private void displayApplicantDetails(Applicant applicant) {
+
+        System.out.println("Applicant ID   : " + applicant.getIdNumber());
+        System.out.println("Last Name      : " + applicant.getLastName());
+        System.out.println("First Name     : " + applicant.getFirstName());
+        System.out.println("Middle Name    : " + applicant.getMiddleName());
+        System.out.println("Address        : " + applicant.getAddress());
+        System.out.println("Contact Number : " + applicant.getContactNumber());
+        System.out.println("GWA            : " + applicant.getGWA());
+    }
+
 
 
 
