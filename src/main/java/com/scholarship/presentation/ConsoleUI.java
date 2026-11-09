@@ -98,7 +98,6 @@ public class ConsoleUI {
         } while (choice != '5');
     }
 
-    
     private void saveApplicant() {
 
         char answer;
@@ -151,18 +150,28 @@ public class ConsoleUI {
 
             clearScreen();
 
+            displayApplicants();
 
         } while (Character.toUpperCase(answer) == 'Y');
     }
+    
 
-
+    
+    //CLEAR SCREEN
     private void clearScreen() {
 
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
         
-    
+    private void displayApplicants() {
+
+        
+
+
+
+
+    }
 
 
     
