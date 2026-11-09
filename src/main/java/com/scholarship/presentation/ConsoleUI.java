@@ -2,6 +2,7 @@ package main.java.com.scholarship.presentation;
 
 import java.util.Scanner;
 
+import main.java.com.scholarship.models.Applicant;
 import main.java.com.scholarship.service.ApplicantManager;
 import main.java.com.scholarship.service.AuthService;
 
@@ -184,6 +185,18 @@ public class ConsoleUI {
             "ADDRESS",
             "CONTACT NUMBER",
             "GWA"
+        );
+
+         System.out.println(
+            "---------------------------------------------------------------------------------------------------------------"
+        );
+
+        for (Applicant applicant : applicantManager.getAllApplicants()) {
+            displayApplicant(applicant);
+        }
+
+        System.out.println(
+            "---------------------------------------------------------------------------------------------------------------"
         );
 
 
