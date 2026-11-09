@@ -77,6 +77,7 @@ public class ConsoleUI {
                     break;
 
                 case '2':
+                    searchApplicant();
                     break;
 
                 case '3':
@@ -157,6 +158,11 @@ public class ConsoleUI {
         } while (Character.toUpperCase(answer) == 'Y');
     }
     
+    // SEARCH APPLICANT
+    private void searchApplicant() {
+       
+
+    }
 
     
     //CLEAR SCREEN
