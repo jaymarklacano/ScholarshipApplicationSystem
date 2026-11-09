@@ -180,13 +180,7 @@ public class ConsoleUI {
                 System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
                 System.out.println("=====================================");
 
-                System.out.println(
-                    "ID NUMBER\tNAME\t\t\tGWA"
-                );
-
-                System.out.println("-------------------------------------");
-
-                displayApplicant(applicant);
+                displayApplicantDetails(applicant);
 
                 System.out.println("-------------------------------------");
 
@@ -263,7 +257,7 @@ public class ConsoleUI {
             applicant.getAddress(),
             applicant.getContactNumber(),
             applicant.getGWA()
-        );
+        );  
     }
 
      // DISPLAY APPLICANT DETAILS
