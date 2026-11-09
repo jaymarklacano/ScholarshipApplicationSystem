@@ -175,6 +175,18 @@ public class ConsoleUI {
         System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
         System.out.println("=====================================");
 
+        System.out.printf(
+            "%-10s %-20s %-20s %-20s %-25s %-15s %-10s%n",
+            "ID NUMBER",
+            "LAST NAME",
+            "FIRST NAME",
+            "MIDDLE NAME",
+            "ADDRESS",
+            "CONTACT NUMBER",
+            "GWA"
+        );
+
+
 
 
 
