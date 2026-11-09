@@ -167,6 +167,10 @@ public class ConsoleUI {
                 break;
             }
 
+            System.out.print("Enter ID number to search: ");
+            int searchId = Integer.parseInt(input.nextLine());
+
+
         }
 
     }
