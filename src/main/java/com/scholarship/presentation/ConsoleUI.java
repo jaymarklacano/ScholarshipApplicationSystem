@@ -161,6 +161,13 @@ public class ConsoleUI {
     // SEARCH APPLICANT
     private void searchApplicant() {
        
+        do{
+            if (applicantManager.getAllApplicants().isEmpty()) {
+                System.out.println("No records to search.");
+                break;
+            }
+
+        }
 
     }
 
