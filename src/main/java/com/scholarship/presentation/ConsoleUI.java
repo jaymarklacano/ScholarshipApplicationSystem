@@ -161,6 +161,8 @@ public class ConsoleUI {
     // SEARCH APPLICANT
     private void searchApplicant() {
        
+        char answer;
+
         do{
             if (applicantManager.getAllApplicants().isEmpty()) {
                 System.out.println("No records to search.");
@@ -169,6 +171,11 @@ public class ConsoleUI {
 
             System.out.print("Enter ID number to search: ");
             int searchId = Integer.parseInt(input.nextLine());
+
+            Applicant applicant = applicantManager.searchApplicant(searchId);
+
+            
+
 
 
         }
