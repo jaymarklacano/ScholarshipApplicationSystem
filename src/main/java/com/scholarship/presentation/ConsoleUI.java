@@ -165,12 +165,15 @@ public class ConsoleUI {
     }
         
     private void displayApplicants() {
-        
+
         if (applicantManager.getAllApplicants().isEmpty()) {
             System.out.println("\nNo applicants to display.");
             return;
         }
 
+        System.out.println("\n=====================================");
+        System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
+        System.out.println("=====================================");
 
 
 
