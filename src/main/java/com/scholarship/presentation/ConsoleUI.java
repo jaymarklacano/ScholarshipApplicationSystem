@@ -73,6 +73,7 @@ public class ConsoleUI {
             switch (choice) {
 
                 case '1':
+                    saveApplicant();
                     break;
 
                 case '2':
@@ -198,13 +199,13 @@ public class ConsoleUI {
         System.out.println(
             "---------------------------------------------------------------------------------------------------------------"
         );
-
-
-
-
-
-
     }
+
+    private void displayApplicant(Applicant applicant) {
+
+        
+    }
+
 
 
     
