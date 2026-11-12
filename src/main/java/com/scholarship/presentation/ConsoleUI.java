@@ -257,7 +257,21 @@ public class ConsoleUI {
                     contactNumber,
                     gwa
                 );
-        }
+
+                System.out.println("Applicant record updated successfully.");
+            }
+
+            displayApplicants();
+
+            System.out.print(
+                "Do you still want to input another Id (y/n)? ");
+
+            answer = input.nextLine().charAt(0);
+
+            clearScreen();
+
+        }while (Character.toUpperCase(answer) == 'Y');
+
     }
 
 
