@@ -224,16 +224,39 @@ public class ConsoleUI {
                 System.out.println("Applicant ID not found.");
 
             } else {
+                System.out.println("\nApplicant found!");
 
+                displayApplicantDetails(applicant);
 
-                
-            }
+                System.out.println("\nEnter New Applicant Information:");
 
+                System.out.print("Last Name: ");
+                String lastName = input.nextLine();
 
+                System.out.print("First Name: ");
+                String firstName = input.nextLine();
 
+                System.out.print("Middle Name: ");
+                String middleName = input.nextLine();
 
+                System.out.print("Address: ");
+                String address = input.nextLine();
 
-        
+                System.out.print("Contact Number: ");
+                String contactNumber = input.nextLine();
+
+                System.out.print("GWA: ");
+                double gwa = Double.parseDouble(input.nextLine());
+
+                applicantManager.updateApplicant(
+                    searchId,
+                    lastName,
+                    firstName,
+                    middleName,
+                    address,
+                    contactNumber,
+                    gwa
+                );
         }
     }
 
