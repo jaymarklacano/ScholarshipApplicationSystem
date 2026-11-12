@@ -81,6 +81,7 @@ public class ConsoleUI {
                     break;
 
                 case '3':
+                    updateApplicant();
                     break;
 
                 case '4':
@@ -201,6 +202,28 @@ public class ConsoleUI {
 
 
     }
+
+    // UPDATE APPLICANT
+    private void updateApplicant() {
+        char answer;
+        do{
+            if (applicantManager.getAllApplicants().isEmpty()) {
+                System.out.println("No applicant records to update.");
+                break;
+            }
+
+            System.out.println("\n--- Update Scholarship Applicant ---");
+            System.out.print("Enter Applicant ID to update: ");
+
+            int searchId = Integer.parseInt(input.nextLine());
+            Applicant applicant = applicantManager.searchApplicant(searchId);
+
+
+
+        
+        }
+    }
+
 
     
     //CLEAR SCREEN
