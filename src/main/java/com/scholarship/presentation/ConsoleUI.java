@@ -197,6 +197,7 @@ public class ConsoleUI {
             answer = input.nextLine().charAt(0);
 
             clearScreen();
+            displayApplicants();
 
         }while (Character.toUpperCase(answer) == 'Y');
 
@@ -268,12 +269,34 @@ public class ConsoleUI {
 
             answer = input.nextLine().charAt(0);
 
-            clearScree
+            clearScreen();
+            displayApplicants();
 
         }while (Character.toUpperCase(answer) == 'Y');
 
     }
 
+    // DELETE APPLICANT
+    private void deleteApplicant() {
+
+        char answer;
+
+        do {
+
+            if (applicantManager.getAllApplicants().isEmpty()) {
+                System.out.println("No applicant records to delete.");
+                break;
+            }
+
+            System.out.println("\n--- Delete Scholarship Applicant ---");
+            System.out.print("Enter Applicant ID to delete: ");
+
+            int deleteId = Integer.parseInt(input.nextLine());
+
+            Applicant applicant =
+                applicantManager.searchApplicant(deleteId);
+        }
+    }
 
     
     //CLEAR SCREEN
