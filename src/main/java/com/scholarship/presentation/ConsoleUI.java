@@ -218,12 +218,12 @@ public class ConsoleUI {
             return;
         }
 
-        System.out.println("\n=====================================");
-        System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
-        System.out.println("=====================================");
+        System.out.println("\n===================================================================================================================================");
+        System.out.println("                                            LIST OF SCHOLARSHIP APPLICANTS                                                         ");
+        System.out.println("===================================================================================================================================");
 
         System.out.printf(
-            "%-10s %-20s %-20s %-20s %-25s %-15s %-10s%n",
+            "%-10s %-20s %-20s %-20s %-28s %-22s %-10s%n",
             "ID NUMBER",
             "LAST NAME",
             "FIRST NAME",
@@ -234,22 +234,20 @@ public class ConsoleUI {
         );
 
          System.out.println(
-            "---------------------------------------------------------------------------------------------------------------"
-        );
+            "-----------------------------------------------------------------------------------------------------------------------------------");
 
         for (Applicant applicant : applicantManager.getAllApplicants()) {
             displayApplicant(applicant);
         }
 
         System.out.println(
-            "---------------------------------------------------------------------------------------------------------------"
-        );
+            "-----------------------------------------------------------------------------------------------------------------------------------");
     }
     
     // DISPLAY ONE APPLICANT
     private void displayApplicant(Applicant applicant) {
         System.out.printf(
-            "%-10d %-20s %-20s %-20s %-25s %-15s %-10.2f%n",
+            "%-10d %-20s %-20s %-20s %-28s %-22s %-10.2f%n",
             applicant.getIdNumber(),
             applicant.getLastName(),
             applicant.getFirstName(),
