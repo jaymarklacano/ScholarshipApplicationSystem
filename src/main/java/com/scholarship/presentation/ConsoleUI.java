@@ -268,7 +268,7 @@ public class ConsoleUI {
 
             answer = input.nextLine().charAt(0);
 
-            clearScreen();
+            clearScree
 
         }while (Character.toUpperCase(answer) == 'Y');
 
