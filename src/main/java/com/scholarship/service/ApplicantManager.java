@@ -71,6 +71,12 @@ public class ApplicantManager {
         return idCounter;
     }
 
+    // SEARCH APPLICANT
+    public Applicant searchApplicant(int id) {
+        return repository.search(id);
+    }
+    
+
     
 
 
