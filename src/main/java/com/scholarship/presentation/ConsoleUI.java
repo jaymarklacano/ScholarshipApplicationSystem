@@ -85,6 +85,7 @@ public class ConsoleUI {
                     break;
 
                 case '4':
+                    deleteApplicant();
                     break;
 
                 case '5':
