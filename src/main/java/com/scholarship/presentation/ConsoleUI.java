@@ -293,8 +293,37 @@ public class ConsoleUI {
 
             int deleteId = Integer.parseInt(input.nextLine());
 
-            Applicant applicant =
-                applicantManager.searchApplicant(deleteId);
+            Applicant applicant = applicantManager.searchApplicant(deleteId);
+
+            if (applicant == null) {
+
+                System.out.println("Applicant ID not found. Cannot delete.");
+
+            } else {
+
+                System.out.println("\nApplicant found!");
+
+                displayApplicantDetails(applicant);
+
+                System.out.print(
+                    "Are you sure you want to delete this applicant (y/n)? "
+                );
+
+                char confirm = input.nextLine().charAt(0);
+
+                if (Character.toUpperCase(confirm) == 'Y') {
+
+                    applicantManager.deleteApplicant(deleteId);
+
+                    System.out.println(
+                        "Applicant record deleted successfully."
+                    );
+
+                } else {
+
+                    System.out.println("Delete operation cancelled.");
+                }
+            }
         }
     }
 
