@@ -324,7 +324,17 @@ public class ConsoleUI {
                     System.out.println("Delete operation cancelled.");
                 }
             }
-        }
+            displayApplicants();
+
+            System.out.print("Do you still want to input another Id (y/n)? ");
+
+            answer = input.nextLine().charAt(0);
+
+            clearScreen();
+            displayApplicants();
+
+        } while (Character.toUpperCase(answer) == 'Y');
+
     }
 
     
