@@ -218,6 +218,19 @@ public class ConsoleUI {
             int searchId = Integer.parseInt(input.nextLine());
             Applicant applicant = applicantManager.searchApplicant(searchId);
 
+            
+            if (applicant == null) {
+
+                System.out.println("Applicant ID not found.");
+
+            } else {
+
+
+                
+            }
+
+
+
 
 
         
