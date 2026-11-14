@@ -375,68 +375,99 @@ private void updateApplicant() {
     } while (Character.toUpperCase(answer) == 'Y');
 
 }
-
     // DELETE APPLICANT
-    private void deleteApplicant() {
+private void deleteApplicant() {
 
-        char answer;
+    char answer;
 
-        do {
+    do {
 
-            if (applicantManager.getAllApplicants().isEmpty()) {
-                System.out.println("No applicant records to delete.");
-                break;
-            }
+        if (applicantManager.getAllApplicants().isEmpty()) {
 
-            System.out.println("\n--- Delete Scholarship Applicant ---");
-            System.out.print("Enter Applicant ID to delete: ");
+            System.out.println();
+            System.out.println("============================================");
+            System.out.println("             SCHOLARSHIP SYSTEM");
+            System.out.println("============================================");
+            System.out.println();
+            System.out.println("           DELETE APPLICANT");
+            System.out.println("--------------------------------------------");
+            System.out.println("No applicant records available to delete.");
+            System.out.println("============================================");
+            break;
+        }
 
-            int deleteId = Integer.parseInt(input.nextLine());
+        System.out.println();
+        System.out.println("============================================");
+        System.out.println("             SCHOLARSHIP SYSTEM");
+        System.out.println("============================================");
+        System.out.println();
+        System.out.println("           DELETE APPLICANT");
+        System.out.println("--------------------------------------------");
+        System.out.println();
 
-            Applicant applicant = applicantManager.searchApplicant(deleteId);
+        System.out.print("Enter Applicant ID Number: ");
+        int deleteId = Integer.parseInt(input.nextLine());
 
-            if (applicant == null) {
+        Applicant applicant = applicantManager.searchApplicant(deleteId);
 
-                System.out.println("Applicant ID not found. Cannot delete.");
+        System.out.println();
+
+        if (applicant == null) {
+
+            System.out.println("--------------------------------------------");
+            System.out.println("Applicant ID not found. Cannot delete.");
+            System.out.println("--------------------------------------------");
+
+        } else {
+
+            System.out.println("============================================");
+            System.out.println("          APPLICANT DELETE DETAILS");
+            System.out.println("============================================");
+
+            displayApplicantDetails(applicant);
+
+            System.out.println("--------------------------------------------");
+            System.out.println();
+
+            System.out.print(
+                "Are you sure you want to delete this applicant (y/n)? "
+            );
+
+            char confirm = input.nextLine().charAt(0);
+
+            if (Character.toUpperCase(confirm) == 'Y') {
+
+                applicantManager.deleteApplicant(deleteId);
+
+                System.out.println();
+                System.out.println("--------------------------------------------");
+                System.out.println("Applicant record deleted successfully!");
+                System.out.println("--------------------------------------------");
 
             } else {
 
-                System.out.println("\nApplicant found!");
-
-                displayApplicantDetails(applicant);
-
-                System.out.print(
-                    "Are you sure you want to delete this applicant (y/n)? "
-                );
-
-                char confirm = input.nextLine().charAt(0);
-
-                if (Character.toUpperCase(confirm) == 'Y') {
-
-                    applicantManager.deleteApplicant(deleteId);
-
-                    System.out.println(
-                        "Applicant record deleted successfully."
-                    );
-
-                } else {
-
-                    System.out.println("Delete operation cancelled.");
-                }
+                System.out.println();
+                System.out.println("--------------------------------------------");
+                System.out.println("Delete operation cancelled.");
+                System.out.println("--------------------------------------------");
             }
-            displayApplicants();
+        }
 
-            System.out.print("Do you still want to input another Id (y/n)? ");
+        System.out.println();
 
-            answer = input.nextLine().charAt(0);
+        displayApplicants();
 
-            clearScreen();
-            displayApplicants();
+        System.out.println("--------------------------------------------");
+        System.out.print("Do you want to delete another applicant (y/n)? ");
 
-        } while (Character.toUpperCase(answer) == 'Y');
+        answer = input.nextLine().charAt(0);
 
-    }
+        clearScreen();
+        displayApplicants();
 
+    } while (Character.toUpperCase(answer) == 'Y');
+
+}
     
     //CLEAR SCREEN
     private void clearScreen() {
