@@ -199,50 +199,75 @@ public class ConsoleUI {
         } while (Character.toUpperCase(answer) == 'Y');
     }
     
-    // SEARCH APPLICANT
-    private void searchApplicant() {
-       
-        char answer;
+   // SEARCH APPLICANT
+private void searchApplicant() {
 
-        do{
-            if (applicantManager.getAllApplicants().isEmpty()) {
-                System.out.println("No records to search.");
-                break;
-            }
+    char answer;
 
-            System.out.print("Enter ID number to search: ");
-            int searchId = Integer.parseInt(input.nextLine());
+    do {
 
-            Applicant applicant = applicantManager.searchApplicant(searchId);
+        if (applicantManager.getAllApplicants().isEmpty()) {
 
-            if (applicant != null) {
+            System.out.println();
+            System.out.println("============================================");
+            System.out.println("             SCHOLARSHIP SYSTEM");
+            System.out.println("============================================");
+            System.out.println();
+            System.out.println("          SEARCH APPLICANT");
+            System.out.println("--------------------------------------------");
+            System.out.println("No applicant records available to search.");
+            System.out.println("============================================");
+            break;
+        }
 
-                System.out.println("\n=====================================");
-                System.out.println(" LIST OF SCHOLARSHIP APPLICANTS");
-                System.out.println("=====================================");
+        System.out.println();
+        System.out.println("============================================");
+        System.out.println("             SCHOLARSHIP SYSTEM");
+        System.out.println("============================================");
+        System.out.println();
+        System.out.println("           SEARCH APPLICANT");
+        System.out.println("--------------------------------------------");
+        System.out.println();
 
-                displayApplicantDetails(applicant);
+        System.out.print("Enter Applicant ID Number: ");
+        int searchId = Integer.parseInt(input.nextLine());
 
-                System.out.println("-------------------------------------");
+        Applicant applicant = applicantManager.searchApplicant(searchId);
 
-            } else {
+        System.out.println();
 
-                System.out.println("ID not found.");
-            }
+        if (applicant != null) {
 
-            System.out.print(
-                "Do you still want to input another Id (y/n)? "
-            );
+            System.out.println("============================================");
+            System.out.println("          APPLICANT SEARCH RESULT");
+            System.out.println("============================================");
 
-            answer = input.nextLine().charAt(0);
+            displayApplicantDetails(applicant);
 
-            clearScreen();
-            displayApplicants();
+            System.out.println("--------------------------------------------");
+            System.out.println("Applicant record found successfully!");
 
-        }while (Character.toUpperCase(answer) == 'Y');
+        } else {
 
+            System.out.println("--------------------------------------------");
+            System.out.println("          APPLICANT SEARCH RESULT");
+            System.out.println("--------------------------------------------");
+            System.out.println("ID Number: " + searchId);
+            System.out.println("Applicant record not found.");
+        }
 
-    }
+        System.out.println("--------------------------------------------");
+        System.out.println();
+
+        System.out.print("Do you want to search another ID (y/n)? ");
+        answer = input.nextLine().charAt(0);
+
+        clearScreen();
+        displayApplicants();
+
+    } while (Character.toUpperCase(answer) == 'Y');
+
+}
 
     // UPDATE APPLICANT
     private void updateApplicant() {
