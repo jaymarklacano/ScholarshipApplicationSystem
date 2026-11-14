@@ -269,77 +269,112 @@ private void searchApplicant() {
 
 }
 
-    // UPDATE APPLICANT
-    private void updateApplicant() {
-        char answer;
-        do{
-            if (applicantManager.getAllApplicants().isEmpty()) {
-                System.out.println("No applicant records to update.");
-                break;
-            }
+   // UPDATE APPLICANT
+private void updateApplicant() {
 
-            System.out.println("\n--- Update Scholarship Applicant ---");
-            System.out.print("Enter Applicant ID to update: ");
+    char answer;
 
-            int searchId = Integer.parseInt(input.nextLine());
-            Applicant applicant = applicantManager.searchApplicant(searchId);
+    do {
 
-            
-            if (applicant == null) {
+        if (applicantManager.getAllApplicants().isEmpty()) {
 
-                System.out.println("Applicant ID not found.");
+            System.out.println();
+            System.out.println("============================================");
+            System.out.println("             SCHOLARSHIP SYSTEM");
+            System.out.println("============================================");
+            System.out.println();
+            System.out.println("          UPDATE APPLICANT");
+            System.out.println("--------------------------------------------");
+            System.out.println("No applicant records available to update.");
+            System.out.println("============================================");
+            break;
+        }
 
-            } else {
-                System.out.println("\nApplicant found!");
+        System.out.println();
+        System.out.println("============================================");
+        System.out.println("             SCHOLARSHIP SYSTEM");
+        System.out.println("============================================");
+        System.out.println();
+        System.out.println("           UPDATE APPLICANT");
+        System.out.println("--------------------------------------------");
+        System.out.println();
 
-                displayApplicantDetails(applicant);
+        System.out.print("Enter Applicant ID Number: ");
+        int searchId = Integer.parseInt(input.nextLine());
 
-                System.out.println("\nEnter New Applicant Information:");
+        Applicant applicant = applicantManager.searchApplicant(searchId);
 
-                System.out.print("Last Name: ");
-                String lastName = input.nextLine();
+        System.out.println();
 
-                System.out.print("First Name: ");
-                String firstName = input.nextLine();
+        if (applicant == null) {
 
-                System.out.print("Middle Name: ");
-                String middleName = input.nextLine();
+            System.out.println("--------------------------------------------");
+            System.out.println("Applicant ID not found.");
+            System.out.println("--------------------------------------------");
 
-                System.out.print("Address: ");
-                String address = input.nextLine();
+        } else {
 
-                System.out.print("Contact Number: ");
-                String contactNumber = input.nextLine();
+            System.out.println("============================================");
+            System.out.println("          EXISTING APPLICANT DETAILS");
+            System.out.println("============================================");
 
-                System.out.print("GWA: ");
-                double gwa = Double.parseDouble(input.nextLine());
+            displayApplicantDetails(applicant);
 
-                applicantManager.updateApplicant(
-                    searchId,
-                    lastName,
-                    firstName,
-                    middleName,
-                    address,
-                    contactNumber,
-                    gwa
-                );
+            System.out.println("--------------------------------------------");
+            System.out.println();
+            System.out.println("       ENTER UPDATED APPLICANT INFORMATION");
+            System.out.println("--------------------------------------------");
+            System.out.println();
 
-                System.out.println("Applicant record updated successfully.");
-            }
+            System.out.print("Last Name       : ");
+            String lastName = input.nextLine();
 
-            displayApplicants();
+            System.out.print("First Name      : ");
+            String firstName = input.nextLine();
 
-            System.out.print(
-                "Do you still want to input another Id (y/n)? ");
+            System.out.print("Middle Name     : ");
+            String middleName = input.nextLine();
 
-            answer = input.nextLine().charAt(0);
+            System.out.print("Address         : ");
+            String address = input.nextLine();
 
-            clearScreen();
-            displayApplicants();
+            System.out.print("Contact Number  : ");
+            String contactNumber = input.nextLine();
 
-        }while (Character.toUpperCase(answer) == 'Y');
+            System.out.print("GWA             : ");
+            double gwa = Double.parseDouble(input.nextLine());
 
-    }
+            applicantManager.updateApplicant(
+                searchId,
+                lastName,
+                firstName,
+                middleName,
+                address,
+                contactNumber,
+                gwa
+            );
+
+            System.out.println();
+            System.out.println("--------------------------------------------");
+            System.out.println("Applicant record updated successfully!");
+            System.out.println("--------------------------------------------");
+        }
+
+        System.out.println();
+
+        displayApplicants();
+
+        System.out.println("--------------------------------------------");
+        System.out.print("Do you want to update another applicant (y/n)? ");
+
+        answer = input.nextLine().charAt(0);
+
+        clearScreen();
+        displayApplicants();
+
+    } while (Character.toUpperCase(answer) == 'Y');
+
+}
 
     // DELETE APPLICANT
     private void deleteApplicant() {
