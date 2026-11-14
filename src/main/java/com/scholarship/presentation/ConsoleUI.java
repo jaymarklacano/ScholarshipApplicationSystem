@@ -127,36 +127,55 @@ public class ConsoleUI {
     private void saveApplicant() {
 
         char answer;
-
+    
         do {
-
+    
             if (applicantManager.getAllApplicants().size() >= 50) {
+    
+                System.out.println("============================================");
+                System.out.println("             SCHOLARSHIP SYSTEM");
+                System.out.println("============================================");
+                System.out.println();
                 System.out.println("Record list is full.");
+                System.out.println("Maximum of 50 applicants reached.");
+                System.out.println("============================================");
                 break;
             }
-
+    
+            System.out.println();
+            System.out.println("============================================");
+            System.out.println("          SCHOLARSHIP SYSTEM");
+            System.out.println("============================================");
+            System.out.println();
+            System.out.println("        APPLICANT REGISTRATION");
+            System.out.println("--------------------------------------------");
             System.out.println(
-                "Assigned ID number: " + applicantManager.getNextId()
+                "Assigned ID Number: " + applicantManager.getNextId()
             );
-
-            System.out.print("Last Name: ");
+            System.out.println("--------------------------------------------");
+            System.out.println();
+    
+            System.out.print("Last Name       : ");
             String lastName = input.nextLine();
-
-            System.out.print("First Name: ");
+    
+            System.out.print("First Name      : ");
             String firstName = input.nextLine();
-
-            System.out.print("Middle Name: ");
+    
+            System.out.print("Middle Name     : ");
             String middleName = input.nextLine();
-
-            System.out.print("Address: ");
+    
+            System.out.print("Address         : ");
             String address = input.nextLine();
-
-            System.out.print("Contact Number: ");
+    
+            System.out.print("Contact Number  : ");
             String contactNumber = input.nextLine();
-
-            System.out.print("GWA: ");
+    
+            System.out.print("GWA             : ");
             double gwa = Double.parseDouble(input.nextLine());
-
+    
+            System.out.println();
+            System.out.println("--------------------------------------------");
+    
             applicantManager.saveApplicant(
                 lastName,
                 firstName,
@@ -165,19 +184,18 @@ public class ConsoleUI {
                 contactNumber,
                 gwa
             );
-
-            System.out.println("Record saved successfully.");
-
-            System.out.print(
-                "Do you still want to input another data (y/n)? "
-            );
-
+    
+            System.out.println("Applicant record saved successfully!");
+            System.out.println("--------------------------------------------");
+    
+            System.out.println();
+            System.out.print("Do you want to register another applicant (y/n)? ");
             answer = input.nextLine().charAt(0);
-
+    
             clearScreen();
-
+    
             displayApplicants();
-
+    
         } while (Character.toUpperCase(answer) == 'Y');
     }
     
