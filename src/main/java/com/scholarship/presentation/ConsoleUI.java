@@ -26,11 +26,21 @@ public class ConsoleUI {
         String realName = "Jay Mark Lacano";
         String realPassword = "12345";
 
+        System.out.println("============================================");
+        System.out.println("          SCHOLARSHIP APPLICANT LOGIN");
+        System.out.println("============================================");
+        System.out.println();
+        System.out.println("             Please Login First");
+        System.out.println();
+
         System.out.print("Enter Name: ");
         String name = input.nextLine();
 
         System.out.print("Enter Password: ");
         String password = input.nextLine();
+
+        System.out.println();
+        System.out.println("--------------------------------------------");
 
         if (!authService.login(name, password)) {
 
@@ -48,10 +58,12 @@ public class ConsoleUI {
                 System.out.println("Incorrect password!");
             }
 
+            System.out.println("--------------------------------------------");
             return;
         }
         
         System.out.println("Login successful!");
+        System.out.println("--------------------------------------------");
         clearScreen();
 
         char choice;
