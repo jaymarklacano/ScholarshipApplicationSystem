@@ -33,11 +33,8 @@ public class ConsoleUI {
         System.out.println("             Please Login First");
         System.out.println();
 
-        System.out.print("Enter Name: ");
-        String name = input.nextLine();
-
-        System.out.print("Enter Password: ");
-        String password = input.nextLine();
+        String name = getValidName("Enter Name: ", false);
+        String password = getValidPassword();
 
         System.out.println();
         System.out.println("--------------------------------------------");
@@ -155,23 +152,17 @@ public class ConsoleUI {
             System.out.println("--------------------------------------------");
             System.out.println();
     
-            System.out.print("Last Name       : ");
-            String lastName = input.nextLine();
-    
-            System.out.print("First Name      : ");
-            String firstName = input.nextLine();
-    
-            System.out.print("Middle Name     : ");
-            String middleName = input.nextLine();
-    
-            System.out.print("Address         : ");
-            String address = input.nextLine();
-    
-            System.out.print("Contact Number  : ");
-            String contactNumber = input.nextLine();
-    
-            System.out.print("GWA             : ");
-            double gwa = Double.parseDouble(input.nextLine());
+            String lastName = getValidName("Last Name       : ", false);
+
+            String firstName = getValidName("First Name      : ", false);
+            
+            String middleName = getValidName("Middle Name     : ", true);
+            
+            String address = getValidAddress();
+            
+            String contactNumber = getValidContactNumber();
+            
+            double gwa = getValidGWA();
     
             System.out.println();
             System.out.println("--------------------------------------------");
@@ -535,6 +526,174 @@ private void deleteApplicant() {
         System.out.println("Contact Number : " + applicant.getContactNumber());
         System.out.println("GWA            : " + applicant.getGWA());
     }
+
+
+// VALIDATE NAME
+private String getValidName(String message, boolean optional) {
+
+    while (true) {
+
+        System.out.print(message);
+        String value = input.nextLine().trim();
+
+        if (optional && value.isEmpty()) {
+            return value;
+        }
+
+        if (value.matches("[\\p{L}][\\p{L} .'-]*")) {
+            return value;
+        }
+
+        System.out.println(
+            "Invalid input! Please enter letters only."
+        );
+    }
+}
+
+// VALIDATE ADDRESS
+private String getValidAddress() {
+
+    while (true) {
+
+        System.out.print("Address         : ");
+        String address = input.nextLine().trim();
+
+        if (address.matches("[\\p{L}\\p{N} .,/#'()-]+")) {
+            return address;
+        }
+
+        System.out.println(
+            "Invalid address! Please enter a valid address."
+        );
+    }
+}
+
+// VALIDATE CONTACT NUMBER
+private String getValidContactNumber() {
+
+    while (true) {
+
+        System.out.print("Contact Number  : ");
+        String contact = input.nextLine().trim();
+
+        if (contact.matches("\\d{10,15}")) {
+            return contact;
+        }
+
+        System.out.println(
+            "Invalid contact number! Enter 10 to 15 digits only."
+        );
+    }
+}
+
+// VALIDATE GWA
+private double getValidGWA() {
+
+    while (true) {
+
+        System.out.print("GWA             : ");
+        String value = input.nextLine().trim();
+
+        try {
+
+            double gwa = Double.parseDouble(value);
+
+            if (Double.isFinite(gwa) && gwa >= 1.00 && gwa <= 5.00) {
+                return gwa;
+            }
+
+            System.out.println(
+                "Invalid GWA! Please enter a value from 1.00 to 5.00."
+            );
+
+        } catch (NumberFormatException e) {
+
+            System.out.println(
+                "Invalid GWA! Numbers and decimals only."
+            );
+        }
+    }
+}
+
+// VALIDATE APPLICANT ID
+private int getValidID(String message) {
+
+    while (true) {
+
+        System.out.print(message);
+        String value = input.nextLine().trim();
+
+        try {
+
+            int id = Integer.parseInt(value);
+
+            if (id > 0) {
+                return id;
+            }
+
+            System.out.println("ID must be a positive number.");
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Invalid ID! Numbers only.");
+        }
+    }
+}
+
+// VALIDATE YES OR NO
+private char getValidAnswer(String message) {
+
+    while (true) {
+
+        System.out.print(message);
+        String value = input.nextLine().trim();
+
+        if (value.equalsIgnoreCase("Y")) {
+            return 'Y';
+        }
+
+        if (value.equalsIgnoreCase("N")) {
+            return 'N';
+        }
+
+        System.out.println("Invalid input! Please enter Y or N.");
+    }
+}
+
+// VALIDATE MENU CHOICE
+private char getValidChoice() {
+
+    while (true) {
+
+        System.out.print("   Enter your choice: ");
+        String value = input.nextLine().trim();
+
+        if (value.matches("[1-5]")) {
+            return value.charAt(0);
+        }
+
+        System.out.println(
+            "Invalid choice! Please enter a number from 1 to 5."
+        );
+    }
+}
+
+// VALIDATE PASSWORD
+private String getValidPassword() {
+
+    while (true) {
+
+        System.out.print("Enter Password: ");
+        String password = input.nextLine();
+
+        if (!password.trim().isEmpty()) {
+            return password;
+        }
+
+        System.out.println("Password cannot be empty!");
+    }
+}
+
 
 
 
