@@ -70,16 +70,23 @@ public class ConsoleUI {
 
         do {
 
-            System.out.println("\n===== Scholarship Applicant =====");
-            System.out.println("\n========= Menu =========");
-            System.out.println("1. Save Information");
-            System.out.println("2. Search ID Number");
-            System.out.println("3. Update Information");
-            System.out.println("4. Delete Information");
-            System.out.println("5. Exit");
-            System.out.println("\n========================");
-            System.out.print("Choice: ");
-
+            System.out.println();
+            System.out.println("============================================");
+            System.out.println("             SCHOLARSHIP SYSTEM");
+            System.out.println("============================================");
+            System.out.println();
+            System.out.println("              APPLICANT MENU");
+            System.out.println("--------------------------------------------");
+            System.out.println();
+            System.out.println("   [1]  Save Information");
+            System.out.println("   [2]  Search ID Number");
+            System.out.println("   [3]  Update Information");
+            System.out.println("   [4]  Delete Information");
+            System.out.println("   [5]  Exit");
+            System.out.println();
+            System.out.println("--------------------------------------------");
+            System.out.print("   Enter your choice: ");
+            
             choice = input.nextLine().charAt(0);
 
             clearScreen();
