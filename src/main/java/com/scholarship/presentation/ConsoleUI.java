@@ -82,9 +82,7 @@ public class ConsoleUI {
             System.out.println("   [5]  Exit");
             System.out.println();
             System.out.println("--------------------------------------------");
-            System.out.print("   Enter your choice: ");
-            
-            choice = input.nextLine().charAt(0);
+            choice = getValidChoice();
 
             clearScreen();
 
@@ -220,8 +218,7 @@ private void searchApplicant() {
         System.out.println("--------------------------------------------");
         System.out.println();
 
-        System.out.print("Enter Applicant ID Number: ");
-        int searchId = Integer.parseInt(input.nextLine());
+        int searchId = getValidID("Enter Applicant ID Number: ");
 
         Applicant applicant = applicantManager.searchApplicant(searchId);
 
@@ -290,8 +287,7 @@ private void updateApplicant() {
         System.out.println("--------------------------------------------");
         System.out.println();
 
-        System.out.print("Enter Applicant ID Number: ");
-        int searchId = Integer.parseInt(input.nextLine());
+        int searchId = getValidID("Enter Applicant ID Number: ");
 
         Applicant applicant = applicantManager.searchApplicant(searchId);
 
@@ -317,23 +313,17 @@ private void updateApplicant() {
             System.out.println("--------------------------------------------");
             System.out.println();
 
-            System.out.print("Last Name       : ");
-            String lastName = input.nextLine();
+            String lastName = getValidName("Last Name       : ", false);
 
-            System.out.print("First Name      : ");
-            String firstName = input.nextLine();
-
-            System.out.print("Middle Name     : ");
-            String middleName = input.nextLine();
-
-            System.out.print("Address         : ");
-            String address = input.nextLine();
-
-            System.out.print("Contact Number  : ");
-            String contactNumber = input.nextLine();
-
-            System.out.print("GWA             : ");
-            double gwa = Double.parseDouble(input.nextLine());
+            String firstName = getValidName("First Name      : ", false);
+            
+            String middleName = getValidName("Middle Name     : ", true);
+            
+            String address = getValidAddress();
+            
+            String contactNumber = getValidContactNumber();
+            
+            double gwa = getValidGWA();
 
             applicantManager.updateApplicant(
                 searchId,
@@ -396,8 +386,7 @@ private void deleteApplicant() {
         System.out.println("--------------------------------------------");
         System.out.println();
 
-        System.out.print("Enter Applicant ID Number: ");
-        int deleteId = Integer.parseInt(input.nextLine());
+        int deleteId = getValidID("Enter Applicant ID Number: ");
 
         Applicant applicant = applicantManager.searchApplicant(deleteId);
 
