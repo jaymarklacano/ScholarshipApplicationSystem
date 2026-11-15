@@ -79,7 +79,8 @@ public class ConsoleUI {
             System.out.println("   [2]  Search ID Number");
             System.out.println("   [3]  Update Information");
             System.out.println("   [4]  Delete Information");
-            System.out.println("   [5]  Exit");
+            System.out.println("   [5]  Scholarship Qualification");
+            System.out.println("   [6]  Exit");
             System.out.println();
             System.out.println("--------------------------------------------");
             choice = getValidChoice();
@@ -105,8 +106,12 @@ public class ConsoleUI {
                     break;
 
                 case '5':
+                    displayScholarshipQualification();
+                    break;
+                    
+                case '6':
                     System.out.println(
-                        "\nExiting Scholarship Information System..."
+                    "\nExiting Scholarship Information System..."
                     );
                     break;
 
@@ -116,7 +121,7 @@ public class ConsoleUI {
                     );
             }
 
-        } while (choice != '5');
+        } while (choice != '6');
     }
 
     private void saveApplicant() {
@@ -448,6 +453,83 @@ private void deleteApplicant() {
     } while (Character.toUpperCase(answer) == 'Y');
 
 }
+
+
+// SCHOLARSHIP QUALIFICATION
+private void displayScholarshipQualification() {
+
+    System.out.println();
+    System.out.println("================================================================");
+    System.out.println("              SCHOLARSHIP QUALIFICATION");
+    System.out.println("================================================================");
+
+    // TABLE 1: QUALIFIED APPLICANTS
+    System.out.println();
+    System.out.println("              POSSIBLE SCHOLARSHIP QUALIFIERS");
+    System.out.println("                    GWA: 1.00 - 1.50");
+    System.out.println("----------------------------------------------------------------");
+
+    System.out.printf("%-10s %-20s %-20s %-10s%n",
+            "ID NUMBER", "LAST NAME", "FIRST NAME", "GWA");
+
+    System.out.println("----------------------------------------------------------------");
+
+    boolean qualifiedFound = false;
+
+    for (Applicant applicant : applicantManager.getAllApplicants()) {
+
+        if (applicant.getGWA() <= 1.50) {
+
+            System.out.printf("%-10d %-20s %-20s %-10.2f%n",
+                    applicant.getIdNumber(),
+                    applicant.getLastName(),
+                    applicant.getFirstName(),
+                    applicant.getGWA());
+
+            qualifiedFound = true;
+        }
+    }
+
+    if (!qualifiedFound) {
+        System.out.println("No possible scholarship qualifiers found.");
+    }
+
+    System.out.println("----------------------------------------------------------------");
+
+
+    // TABLE 2: OTHER APPLICANTS
+    System.out.println();
+    System.out.println("                  OTHER APPLICANTS");
+    System.out.println("                    GWA: ABOVE 1.50");
+    System.out.println("----------------------------------------------------------------");
+
+    System.out.printf("%-10s %-20s %-20s %-10s%n",
+            "ID NUMBER", "LAST NAME", "FIRST NAME", "GWA");
+
+    System.out.println("----------------------------------------------------------------");
+
+    boolean otherFound = false;
+
+    for (Applicant applicant : applicantManager.getAllApplicants()) {
+
+        if (applicant.getGWA() > 1.50) {
+
+            System.out.printf("%-10d %-20s %-20s %-10.2f%n",
+                    applicant.getIdNumber(),
+                    applicant.getLastName(),
+                    applicant.getFirstName(),
+                    applicant.getGWA());
+
+            otherFound = true;
+        }
+    }
+
+    if (!otherFound) {
+        System.out.println("No other applicants found.");
+    }
+
+    System.out.println("----------------------------------------------------------------");
+}
     
     //CLEAR SCREEN
     private void clearScreen() {
@@ -629,25 +711,6 @@ private int getValidID(String message) {
     }
 }
 
-// VALIDATE YES OR NO
-private char getValidAnswer(String message) {
-
-    while (true) {
-
-        System.out.print(message);
-        String value = input.nextLine().trim();
-
-        if (value.equalsIgnoreCase("Y")) {
-            return 'Y';
-        }
-
-        if (value.equalsIgnoreCase("N")) {
-            return 'N';
-        }
-
-        System.out.println("Invalid input! Please enter Y or N.");
-    }
-}
 
 // VALIDATE MENU CHOICE
 private char getValidChoice() {
@@ -657,12 +720,12 @@ private char getValidChoice() {
         System.out.print("   Enter your choice: ");
         String value = input.nextLine().trim();
 
-        if (value.matches("[1-5]")) {
+        if (value.matches("[1-6]")) {
             return value.charAt(0);
         }
 
         System.out.println(
-            "Invalid choice! Please enter a number from 1 to 5."
+            "Invalid choice! Please enter a number from 1 to 6."
         );
     }
 }
