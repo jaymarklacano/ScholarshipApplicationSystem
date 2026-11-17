@@ -758,6 +758,70 @@ private boolean areRequirementsComplete(Applicant applicant) {
         && applicant.isSchoolIDSubmitted();
 }
 
+// SCHOLARSHIP EVALUATION
+private void scholarshipEvaluation() {
+
+    System.out.println("\n============================================");
+    System.out.println("          SCHOLARSHIP EVALUATION");
+    System.out.println("============================================");
+
+    if (applicantManager.getAllApplicants().isEmpty()) {
+        System.out.println("No applicant records available.");
+        return;
+    }
+
+    int id = getValidID("Enter Applicant ID Number: ");
+
+    Applicant applicant = applicantManager.searchApplicant(id);
+
+    if (applicant == null) {
+        System.out.println("Applicant ID not found.");
+        return;
+    }
+
+    System.out.println("\n--------------------------------------------");
+    displayApplicantDetails(applicant);
+
+    System.out.println("--------------------------------------------");
+
+    boolean complete = areRequirementsComplete(applicant);
+
+    System.out.println("Requirements: " +
+            (complete ? "Complete" : "Incomplete"));
+
+    System.out.println("GWA: " + applicant.getGWA());
+
+    System.out.println("--------------------------------------------");
+    System.out.println("          EVALUATION RESULT");
+    System.out.println("--------------------------------------------");
+
+    if (!complete) {
+
+        applicant.setApplicationStatus("Under Review");
+
+        System.out.println("Result: INCOMPLETE REQUIREMENTS");
+        System.out.println("Application Status: Under Review");
+
+    } else if (applicant.getGWA() <= 1.50) {
+
+        applicant.setApplicationStatus("Approved");
+
+        System.out.println("Result: QUALIFIED");
+        System.out.println("Application Status: Approved");
+
+    } else {
+
+        applicant.setApplicationStatus("Rejected");
+
+        System.out.println("Result: NOT QUALIFIED");
+        System.out.println("Application Status: Rejected");
+    }
+
+    System.out.println("--------------------------------------------");
+    System.out.println("Evaluation completed successfully!");
+    System.out.println("============================================");
+}
+
 
 
 
