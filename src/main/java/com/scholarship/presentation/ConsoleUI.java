@@ -63,7 +63,7 @@ public class ConsoleUI {
         System.out.println("--------------------------------------------");
         clearScreen();
 
-        char choice;
+        int choice;
 
         do {
 
@@ -115,19 +115,42 @@ public class ConsoleUI {
                     displayScholarshipQualification();
                     break;
                     
-                case '6':
+                case 6:
+                    applicationStatus();
+                    break;
+                    
+                case 7:
+                    scholarshipRequirements();
+                    break;
+                    
+                case 8:
+                    scholarshipEvaluation();
+                    break;
+                    
+                case 9:
+                    displayScholarshipAwardees();
+                    break;
+                    
+                case 10:
+                    displayApplicantReports();
+                    break;
+                    
+                case 11:
+                    scholarshipRenewal();
+                    break;
+                    
+                case 12:
                     System.out.println(
-                    "\nExiting Scholarship Information System..."
+                        "\nExiting Scholarship Information System..."
                     );
                     break;
-
                 default:
                     System.out.println(
                         "Invalid choice. Please try again."
                     );
             }
 
-        } while (choice != '6');
+        } while (choice != 12);
     }
 
     private void saveApplicant() {
@@ -536,6 +559,78 @@ private void displayScholarshipQualification() {
 
     System.out.println("----------------------------------------------------------------");
 }
+
+// APPLICATION STATUS
+private void applicationStatus() {
+
+    System.out.println("\n============================================");
+    System.out.println("             APPLICATION STATUS");
+    System.out.println("============================================");
+
+    if (applicantManager.getAllApplicants().isEmpty()) {
+        System.out.println("No applicant records available.");
+        return;
+    }
+
+    int id = getValidID("Enter Applicant ID Number: ");
+
+    Applicant applicant = applicantManager.searchApplicant(id);
+
+    if (applicant == null) {
+        System.out.println("Applicant ID not found.");
+        return;
+    }
+
+    System.out.println("\n--------------------------------------------");
+    displayApplicantDetails(applicant);
+
+    System.out.println("--------------------------------------------");
+    System.out.println("Current Status: " +
+            applicant.getApplicationStatus());
+
+    System.out.println("\n[1] Pending");
+    System.out.println("[2] Under Review");
+    System.out.println("[3] Approved");
+    System.out.println("[4] Rejected");
+    System.out.println("[5] Cancel");
+
+    System.out.print("\nSelect New Status: ");
+
+    String choice = input.nextLine().trim();
+
+    switch (choice) {
+
+        case "1":
+            applicant.setApplicationStatus("Pending");
+            break;
+
+        case "2":
+            applicant.setApplicationStatus("Under Review");
+            break;
+
+        case "3":
+            applicant.setApplicationStatus("Approved");
+            break;
+
+        case "4":
+            applicant.setApplicationStatus("Rejected");
+            break;
+
+        case "5":
+            System.out.println("Status update cancelled.");
+            return;
+
+        default:
+            System.out.println("Invalid choice!");
+            return;
+    }
+
+    System.out.println("--------------------------------------------");
+    System.out.println("Application status updated successfully!");
+    System.out.println("New Status: " +
+            applicant.getApplicationStatus());
+    System.out.println("--------------------------------------------");
+}
     
     //CLEAR SCREEN
     private void clearScreen() {
@@ -718,20 +813,29 @@ private int getValidID(String message) {
 }
 
 
-private char getValidChoice() {
+// VALIDATE MENU CHOICE
+private int getValidChoice() {
 
     while (true) {
 
         System.out.print("   Enter your choice: ");
         String value = input.nextLine().trim();
 
-        if (value.matches("([1-9]|1[0-2])")) {
-            return value.charAt(0);
-        }
+        try {
+            int choice = Integer.parseInt(value);
 
-        System.out.println(
-            "Invalid choice! Please enter a number from 1 to 12."
-        );
+            if (choice >= 1 && choice <= 12) {
+                return choice;
+            }
+
+            System.out.println(
+                "Invalid choice! Please enter a number from 1 to 12."
+            );
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Invalid choice! Numbers only.");
+        }
     }
 }
 
