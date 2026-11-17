@@ -80,7 +80,13 @@ public class ConsoleUI {
             System.out.println("   [3]  Update Information");
             System.out.println("   [4]  Delete Information");
             System.out.println("   [5]  Scholarship Qualification");
-            System.out.println("   [6]  Exit");
+            System.out.println("   [6]  Application Status");
+            System.out.println("   [7]  Scholarship Requirements");
+            System.out.println("   [8]  Scholarship Evaluation");
+            System.out.println("   [9]  Scholarship Awardees");
+            System.out.println("   [10] Applicant Reports");
+            System.out.println("   [11] Scholarship Renewal");
+            System.out.println("   [12] Exit");
             System.out.println();
             System.out.println("--------------------------------------------");
             choice = getValidChoice();
@@ -728,7 +734,7 @@ private char getValidChoice() {
             "Invalid choice! Please enter a number from 1 to 6."
         );
     }
-}
+} 
 
 // VALIDATE PASSWORD
 private String getValidPassword() {
