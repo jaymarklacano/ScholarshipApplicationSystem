@@ -823,6 +823,51 @@ private void scholarshipEvaluation() {
 }
 
 
+// DISPLAY SCHOLARSHIP AWARDEES
+private void displayScholarshipAwardees() {
+
+    System.out.println("\n================================================================");
+    System.out.println("                    SCHOLARSHIP AWARDEES");
+    System.out.println("================================================================");
+
+    System.out.printf("%-10s %-20s %-20s %-10s%n",
+            "ID NUMBER",
+            "LAST NAME",
+            "FIRST NAME",
+            "GWA");
+
+    System.out.println("----------------------------------------------------------------");
+
+    boolean found = false;
+
+    for (Applicant applicant : applicantManager.getAllApplicants()) {
+
+        if (applicant.getApplicationStatus().equalsIgnoreCase("Approved")) {
+
+            System.out.printf("%-10d %-20s %-20s %-10.2f%n",
+                    applicant.getIdNumber(),
+                    applicant.getLastName(),
+                    applicant.getFirstName(),
+                    applicant.getGWA());
+
+            found = true;
+        }
+    }
+
+    if (!found) {
+        System.out.println("No approved scholarship awardees found.");
+    }
+
+    System.out.println("----------------------------------------------------------------");
+
+    System.out.println("Total Scholarship Awardees: " +
+            countApplicantsByStatus("Approved"));
+
+    System.out.println("================================================================");
+}
+
+
+
 
 
     
@@ -1047,6 +1092,21 @@ private String getValidPassword() {
 
         System.out.println("Password cannot be empty!");
     }
+}
+
+// COUNT APPLICANTS BY STATUS
+private int countApplicantsByStatus(String status) {
+
+    int count = 0;
+
+    for (Applicant applicant : applicantManager.getAllApplicants()) {
+
+        if (applicant.getApplicationStatus().equalsIgnoreCase(status)) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
 
