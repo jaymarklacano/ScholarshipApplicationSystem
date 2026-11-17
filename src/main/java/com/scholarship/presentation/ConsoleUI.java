@@ -630,7 +630,137 @@ private void applicationStatus() {
     System.out.println("New Status: " +
             applicant.getApplicationStatus());
     System.out.println("--------------------------------------------");
+}// SCHOLARSHIP REQUIREMENTS
+private void scholarshipRequirements() {
+
+    System.out.println("\n============================================");
+    System.out.println("          SCHOLARSHIP REQUIREMENTS");
+    System.out.println("============================================");
+
+    if (applicantManager.getAllApplicants().isEmpty()) {
+        System.out.println("No applicant records available.");
+        return;
+    }
+
+    int id = getValidID("Enter Applicant ID Number: ");
+
+    Applicant applicant = applicantManager.searchApplicant(id);
+
+    if (applicant == null) {
+        System.out.println("Applicant ID not found.");
+        return;
+    }
+
+    System.out.println("\nApplicant Name: " +
+            applicant.getFirstName() + " " +
+            applicant.getLastName());
+
+    System.out.println("--------------------------------------------");
+
+    System.out.println("[1] Certificate of Enrollment");
+    System.out.println("[2] Copy of Grades");
+    System.out.println("[3] Certificate of Indigency");
+    System.out.println("[4] Valid School ID");
+
+    System.out.println("--------------------------------------------");
+    System.out.println("UPDATE REQUIREMENT STATUS");
+    System.out.println("--------------------------------------------");
+
+    applicant.setEnrollmentSubmitted(
+        askSubmitted("Certificate of Enrollment")
+    );
+
+    applicant.setGradesSubmitted(
+        askSubmitted("Copy of Grades")
+    );
+
+    applicant.setIndigencySubmitted(
+        askSubmitted("Certificate of Indigency")
+    );
+
+    applicant.setSchoolIDSubmitted(
+        askSubmitted("Valid School ID")
+    );
+
+    System.out.println("\n============================================");
+    System.out.println("       REQUIREMENT SUBMISSION STATUS");
+    System.out.println("============================================");
+
+    displayRequirement(
+        "Certificate of Enrollment",
+        applicant.isEnrollmentSubmitted()
+    );
+
+    displayRequirement(
+        "Copy of Grades",
+        applicant.isGradesSubmitted()
+    );
+
+    displayRequirement(
+        "Certificate of Indigency",
+        applicant.isIndigencySubmitted()
+    );
+
+    displayRequirement(
+        "Valid School ID",
+        applicant.isSchoolIDSubmitted()
+    );
+
+    System.out.println("--------------------------------------------");
+
+    if (areRequirementsComplete(applicant)) {
+        System.out.println("Requirements Status: COMPLETE");
+    } else {
+        System.out.println("Requirements Status: INCOMPLETE");
+    }
+
+    System.out.println("============================================");
 }
+
+
+// ASK REQUIREMENT STATUS
+private boolean askSubmitted(String requirement) {
+
+    while (true) {
+
+        System.out.print(requirement + " submitted (y/n)? ");
+
+        String answer = input.nextLine().trim();
+
+        if (answer.equalsIgnoreCase("y")) {
+            return true;
+        }
+
+        if (answer.equalsIgnoreCase("n")) {
+            return false;
+        }
+
+        System.out.println("Invalid input! Enter y or n.");
+    }
+}
+
+
+// DISPLAY REQUIREMENT
+private void displayRequirement(String name, boolean submitted) {
+
+    System.out.printf("%-30s : %s%n",
+            name,
+            submitted ? "Submitted" : "Pending");
+}
+
+
+// CHECK ALL REQUIREMENTS
+private boolean areRequirementsComplete(Applicant applicant) {
+
+    return applicant.isEnrollmentSubmitted()
+        && applicant.isGradesSubmitted()
+        && applicant.isIndigencySubmitted()
+        && applicant.isSchoolIDSubmitted();
+}
+
+
+
+
     
     //CLEAR SCREEN
     private void clearScreen() {
