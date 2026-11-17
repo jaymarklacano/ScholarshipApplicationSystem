@@ -867,7 +867,69 @@ private void displayScholarshipAwardees() {
 }
 
 
+// APPLICANT REPORTS
+private void displayApplicantReports() {
 
+    System.out.println("\n============================================");
+    System.out.println("              APPLICANT REPORTS");
+    System.out.println("============================================");
+
+    int total = applicantManager.getAllApplicants().size();
+
+    int qualified = 0;
+    int other = 0;
+
+    int pending = countApplicantsByStatus("Pending");
+    int underReview = countApplicantsByStatus("Under Review");
+    int approved = countApplicantsByStatus("Approved");
+    int rejected = countApplicantsByStatus("Rejected");
+
+    int completeRequirements = 0;
+    int incompleteRequirements = 0;
+
+    for (Applicant applicant : applicantManager.getAllApplicants()) {
+
+        if (applicant.getGWA() <= 1.50) {
+            qualified++;
+        } else {
+            other++;
+        }
+
+        if (areRequirementsComplete(applicant)) {
+            completeRequirements++;
+        } else {
+            incompleteRequirements++;
+        }
+    }
+
+    System.out.println("\n             APPLICANT SUMMARY");
+    System.out.println("--------------------------------------------");
+
+    System.out.printf("%-30s : %d%n", "Total Applicants", total);
+    System.out.printf("%-30s : %d%n", "Qualified by GWA", qualified);
+    System.out.printf("%-30s : %d%n", "Other Applicants", other);
+
+    System.out.println("\n          APPLICATION STATUS");
+    System.out.println("--------------------------------------------");
+
+    System.out.printf("%-30s : %d%n", "Pending", pending);
+    System.out.printf("%-30s : %d%n", "Under Review", underReview);
+    System.out.printf("%-30s : %d%n", "Approved", approved);
+    System.out.printf("%-30s : %d%n", "Rejected", rejected);
+
+    System.out.println("\n         REQUIREMENT SUMMARY");
+    System.out.println("--------------------------------------------");
+
+    System.out.printf("%-30s : %d%n",
+            "Complete Requirements", completeRequirements);
+
+    System.out.printf("%-30s : %d%n",
+            "Incomplete Requirements", incompleteRequirements);
+
+    System.out.println("--------------------------------------------");
+    System.out.println("             END OF REPORT");
+    System.out.println("============================================");
+}
 
 
     
