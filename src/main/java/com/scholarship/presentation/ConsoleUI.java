@@ -718,7 +718,6 @@ private int getValidID(String message) {
 }
 
 
-// VALIDATE MENU CHOICE
 private char getValidChoice() {
 
     while (true) {
@@ -726,15 +725,15 @@ private char getValidChoice() {
         System.out.print("   Enter your choice: ");
         String value = input.nextLine().trim();
 
-        if (value.matches("[1-6]")) {
+        if (value.matches("([1-9]|1[0-2])")) {
             return value.charAt(0);
         }
 
         System.out.println(
-            "Invalid choice! Please enter a number from 1 to 6."
+            "Invalid choice! Please enter a number from 1 to 12."
         );
     }
-} 
+}
 
 // VALIDATE PASSWORD
 private String getValidPassword() {
